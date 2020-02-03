@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ld.store.dao.SampleinfoMapper">
+    <sql id="Base_Column_List">
+            sampleInfoId,
+            instoreNo,
+            sampleStatus,
+            sampleTime,
+            samplePerson,
+            sampleNo,
+            instoreAdmin,
+            remark,
+            goodsDesc,
+            enabled
+    </sql>
+    <resultMap id="BaseResultMap" type="com.ld.store.entity.Sampleinfo">
+    <!--@mbg.generated-->
+    <result column="sampleInfoId" jdbcType="VARCHAR" property="sampleinfoid" />
+    <result column="instoreNo" jdbcType="VARCHAR" property="instoreno" />
+    <result column="sampleStatus" jdbcType="TINYINT" property="samplestatus" />
+    <result column="sampleTime" jdbcType="BIGINT" property="sampletime" />
+    <result column="samplePerson" jdbcType="VARCHAR" property="sampleperson" />
+    <result column="sampleNo" jdbcType="VARCHAR" property="sampleno" />
+    <result column="instoreAdmin" jdbcType="VARCHAR" property="instoreadmin" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="goodsDesc" jdbcType="VARCHAR" property="goodsdesc" />
+    <result column="enabled" jdbcType="VARCHAR" property="enabled" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ld.store.entity.Sampleinfo">
+    <!--@mbg.generated-->
+    insert into sampleinfo (sampleInfoId, instoreNo, sampleStatus, 
+      sampleTime, samplePerson, sampleNo, 
+      instoreAdmin, remark, goodsDesc, 
+      enabled)
+    values (#{sampleinfoid,jdbcType=VARCHAR}, #{instoreno,jdbcType=VARCHAR}, #{samplestatus,jdbcType=TINYINT}, 
+      #{sampletime,jdbcType=BIGINT}, #{sampleperson,jdbcType=VARCHAR}, #{sampleno,jdbcType=VARCHAR}, 
+      #{instoreadmin,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{goodsdesc,jdbcType=VARCHAR}, 
+      #{enabled,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ld.store.entity.Sampleinfo">
+    <!--@mbg.generated-->
+    insert into sampleinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sampleinfoid != null">
+        sampleInfoId,
+      </if>
+      <if test="instoreno != null">
+        instoreNo,
+      </if>
+      <if test="samplestatus != null">
+        sampleStatus,
+      </if>
+      <if test="sampletime != null">
+        sampleTime,
+      </if>
+      <if test="sampleperson != null">
+        samplePerson,
+      </if>
+      <if test="sampleno != null">
+        sampleNo,
+      </if>
+      <if test="instoreadmin != null">
+        instoreAdmin,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="goodsdesc != null">
+        goodsDesc,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sampleinfoid != null">
+        #{sampleinfoid,jdbcType=VARCHAR},
+      </if>
+      <if test="instoreno != null">
+        #{instoreno,jdbcType=VARCHAR},
+      </if>
+      <if test="samplestatus != null">
+        #{samplestatus,jdbcType=TINYINT},
+      </if>
+      <if test="sampletime != null">
+        #{sampletime,jdbcType=BIGINT},
+      </if>
+      <if test="sampleperson != null">
+        #{sampleperson,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleno != null">
+        #{sampleno,jdbcType=VARCHAR},
+      </if>
+      <if test="instoreadmin != null">
+        #{instoreadmin,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsdesc != null">
+        #{goodsdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into sampleinfo
+    (sampleInfoId, instoreNo, sampleStatus, sampleTime, samplePerson, sampleNo, instoreAdmin, 
+      remark, goodsDesc, enabled)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.sampleinfoid,jdbcType=VARCHAR}, #{item.instoreno,jdbcType=VARCHAR}, #{item.samplestatus,jdbcType=TINYINT}, 
+        #{item.sampletime,jdbcType=BIGINT}, #{item.sampleperson,jdbcType=VARCHAR}, #{item.sampleno,jdbcType=VARCHAR}, 
+        #{item.instoreadmin,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.goodsdesc,jdbcType=VARCHAR}, 
+        #{item.enabled,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+    <select id="queryAllBySampleinfoid" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sampleinfo
+        where 1=1
+        <if test="sampleinfoid != null">
+            and sampleInfoId=#{sampleinfoid,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryByAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sampleinfo
+        where 1=1
+        <if test="samplePerson != null and samplePerson != '' ">
+            and samplePerson=#{samplePerson}
+        </if>
+        <if test="sampleNo != null and sampleNo != ''">
+            and sampleNo=#{sampleNo,jdbcType=VARCHAR}
+        </if>
+        <if test="instoreAdmin != null and instoreAdmin != ''">
+            and instoreAdmin=#{instoreAdmin,jdbcType=VARCHAR}
+        </if>
+          <if test="startTime != null and endTime != null">
+              and sampleTime &gt; #{startTime} and sampleTime &lt; #{endTime}
+          </if>
+        and enabled=0  limit #{startRow} ,#{pageSize}
+    </select>
+    <update id="updateBySampleinfoid">
+        update sampleinfo
+        <set>
+            <if test="updated.sampleinfoid != null">
+                sampleInfoId = #{updated.sampleinfoid,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.instoreno != null">
+                instoreNo = #{updated.instoreno,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.samplestatus != null">
+                sampleStatus = #{updated.samplestatus,jdbcType=TINYINT},
+            </if>
+            <if test="updated.sampletime != null">
+                sampleTime = #{updated.sampletime,jdbcType=BIGINT},
+            </if>
+            <if test="updated.sampleperson != null">
+                samplePerson = #{updated.sampleperson,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.sampleno != null">
+                sampleNo = #{updated.sampleno,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.instoreadmin != null">
+                instoreAdmin = #{updated.instoreadmin,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.remark != null">
+                remark = #{updated.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsdesc != null">
+                goodsDesc = #{updated.goodsdesc,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.enabled != null">
+                enabled = #{updated.enabled,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where sampleInfoId=#{sampleinfoid,jdbcType=VARCHAR}
+    </update>
+
+
+
+</mapper>

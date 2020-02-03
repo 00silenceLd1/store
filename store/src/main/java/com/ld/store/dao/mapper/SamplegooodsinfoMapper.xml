@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ld.store.dao.SamplegooodsinfoMapper">
+    <sql id="Base_Column_List">
+            sampleGoodsId,
+            sampleNo,
+            instoreNo,
+            goodsName,
+            goodsFirstQty,
+            goodsFirstUnit,
+            goodsModel,
+            goodsDetailI,
+            sampleReturnPerson,
+            sampleReturnTime,
+            goodsHandleFirstQty,
+            goodsHandleFirstUnit,
+            returnStatus,
+            enabled,
+            goodsPosition,
+            goodsEvaluation
+    </sql>
+    <resultMap id="BaseResultMap" type="com.ld.store.entity.Samplegooodsinfo">
+    <!--@mbg.generated-->
+    <result column="sampleGoodsId" jdbcType="VARCHAR" property="samplegoodsid" />
+    <result column="sampleNo" jdbcType="VARCHAR" property="sampleno" />
+    <result column="instoreNo" jdbcType="VARCHAR" property="instoreno" />
+    <result column="goodsName" jdbcType="VARCHAR" property="goodsname" />
+    <result column="goodsFirstQty" jdbcType="FLOAT" property="goodsfirstqty" />
+    <result column="goodsFirstUnit" jdbcType="VARCHAR" property="goodsfirstunit" />
+    <result column="goodsModel" jdbcType="VARCHAR" property="goodsmodel" />
+    <result column="goodsDetailI" jdbcType="VARCHAR" property="goodsdetaili" />
+    <result column="sampleReturnPerson" jdbcType="VARCHAR" property="samplereturnperson" />
+    <result column="sampleReturnTime" jdbcType="BIGINT" property="samplereturntime" />
+    <result column="goodsHandleFirstQty" jdbcType="FLOAT" property="goodshandlefirstqty" />
+    <result column="goodsHandleFirstUnit" jdbcType="VARCHAR" property="goodshandlefirstunit" />
+    <result column="returnStatus" jdbcType="TINYINT" property="returnstatus" />
+    <result column="enabled" jdbcType="TINYINT" property="enabled" />
+    <result column="goodsPosition" jdbcType="TINYINT" property="goodsposition" />
+    <result column="goodsEvaluation" jdbcType="VARCHAR" property="goodsevaluation" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ld.store.entity.Samplegooodsinfo">
+    <!--@mbg.generated-->
+    insert into samplegooodsinfo (sampleGoodsId, sampleNo, instoreNo, 
+      goodsName, goodsFirstQty, goodsFirstUnit, 
+      goodsModel, goodsDetailI, sampleReturnPerson, 
+      sampleReturnTime, goodsHandleFirstQty, goodsHandleFirstUnit, 
+      returnStatus, enabled, goodsPosition, 
+      goodsEvaluation)
+    values (#{samplegoodsid,jdbcType=VARCHAR}, #{sampleno,jdbcType=VARCHAR}, #{instoreno,jdbcType=VARCHAR}, 
+      #{goodsname,jdbcType=VARCHAR}, #{goodsfirstqty,jdbcType=FLOAT}, #{goodsfirstunit,jdbcType=VARCHAR}, 
+      #{goodsmodel,jdbcType=VARCHAR}, #{goodsdetaili,jdbcType=VARCHAR}, #{samplereturnperson,jdbcType=VARCHAR}, 
+      #{samplereturntime,jdbcType=BIGINT}, #{goodshandlefirstqty,jdbcType=FLOAT}, #{goodshandlefirstunit,jdbcType=VARCHAR}, 
+      #{returnstatus,jdbcType=TINYINT}, #{enabled,jdbcType=TINYINT}, #{goodsposition,jdbcType=TINYINT}, 
+      #{goodsevaluation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ld.store.entity.Samplegooodsinfo">
+    <!--@mbg.generated-->
+    insert into samplegooodsinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="samplegoodsid != null">
+        sampleGoodsId,
+      </if>
+      <if test="sampleno != null">
+        sampleNo,
+      </if>
+      <if test="instoreno != null">
+        instoreNo,
+      </if>
+      <if test="goodsname != null">
+        goodsName,
+      </if>
+      <if test="goodsfirstqty != null">
+        goodsFirstQty,
+      </if>
+      <if test="goodsfirstunit != null">
+        goodsFirstUnit,
+      </if>
+      <if test="goodsmodel != null">
+        goodsModel,
+      </if>
+      <if test="goodsdetaili != null">
+        goodsDetailI,
+      </if>
+      <if test="samplereturnperson != null">
+        sampleReturnPerson,
+      </if>
+      <if test="samplereturntime != null">
+        sampleReturnTime,
+      </if>
+      <if test="goodshandlefirstqty != null">
+        goodsHandleFirstQty,
+      </if>
+      <if test="goodshandlefirstunit != null">
+        goodsHandleFirstUnit,
+      </if>
+      <if test="returnstatus != null">
+        returnStatus,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="goodsposition != null">
+        goodsPosition,
+      </if>
+      <if test="goodsevaluation != null">
+        goodsEvaluation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="samplegoodsid != null">
+        #{samplegoodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleno != null">
+        #{sampleno,jdbcType=VARCHAR},
+      </if>
+      <if test="instoreno != null">
+        #{instoreno,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsfirstqty != null">
+        #{goodsfirstqty,jdbcType=FLOAT},
+      </if>
+      <if test="goodsfirstunit != null">
+        #{goodsfirstunit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsmodel != null">
+        #{goodsmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsdetaili != null">
+        #{goodsdetaili,jdbcType=VARCHAR},
+      </if>
+      <if test="samplereturnperson != null">
+        #{samplereturnperson,jdbcType=VARCHAR},
+      </if>
+      <if test="samplereturntime != null">
+        #{samplereturntime,jdbcType=BIGINT},
+      </if>
+      <if test="goodshandlefirstqty != null">
+        #{goodshandlefirstqty,jdbcType=FLOAT},
+      </if>
+      <if test="goodshandlefirstunit != null">
+        #{goodshandlefirstunit,jdbcType=VARCHAR},
+      </if>
+      <if test="returnstatus != null">
+        #{returnstatus,jdbcType=TINYINT},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=TINYINT},
+      </if>
+      <if test="goodsposition != null">
+        #{goodsposition,jdbcType=TINYINT},
+      </if>
+      <if test="goodsevaluation != null">
+        #{goodsevaluation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into samplegooodsinfo
+    (sampleGoodsId, sampleNo, instoreNo, goodsName, goodsFirstQty, goodsFirstUnit, goodsModel, 
+      goodsDetailI, sampleReturnPerson, sampleReturnTime, goodsHandleFirstQty, goodsHandleFirstUnit, 
+      returnStatus, enabled, goodsPosition, goodsEvaluation)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.samplegoodsid,jdbcType=VARCHAR}, #{item.sampleno,jdbcType=VARCHAR}, #{item.instoreno,jdbcType=VARCHAR}, 
+        #{item.goodsname,jdbcType=VARCHAR}, #{item.goodsfirstqty,jdbcType=FLOAT}, #{item.goodsfirstunit,jdbcType=VARCHAR}, 
+        #{item.goodsmodel,jdbcType=VARCHAR}, #{item.goodsdetaili,jdbcType=VARCHAR}, #{item.samplereturnperson,jdbcType=VARCHAR}, 
+        #{item.samplereturntime,jdbcType=BIGINT}, #{item.goodshandlefirstqty,jdbcType=FLOAT}, 
+        #{item.goodshandlefirstunit,jdbcType=VARCHAR}, #{item.returnstatus,jdbcType=TINYINT}, 
+        #{item.enabled,jdbcType=TINYINT}, #{item.goodsposition,jdbcType=TINYINT}, #{item.goodsevaluation,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+
+<!--auto generated by MybatisCodeHelper on 2019-12-13-->
+    <select id="queryBySamplenoAndGoodsname" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from samplegooodsinfo
+        where 1=1
+        <if test="sampleno != null">
+            and sampleNo=#{sampleno,jdbcType=VARCHAR}
+        </if>
+        <if test="goodsname != null">
+            and goodsName=#{goodsname,jdbcType=VARCHAR}
+        </if>
+        limit #{startRow} ,#{pageSize}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2019-12-13-->
+    <update id="updateBySamplegoodsid">
+        update samplegooodsinfo
+        <set>
+            <if test="updated.samplegoodsid != null">
+                sampleGoodsId = #{updated.samplegoodsid,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.sampleno != null">
+                sampleNo = #{updated.sampleno,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.instoreno != null">
+                instoreNo = #{updated.instoreno,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsname != null">
+                goodsName = #{updated.goodsname,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsfirstqty != null">
+                goodsFirstQty = #{updated.goodsfirstqty,jdbcType=FLOAT},
+            </if>
+            <if test="updated.goodsfirstunit != null">
+                goodsFirstUnit = #{updated.goodsfirstunit,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsmodel != null">
+                goodsModel = #{updated.goodsmodel,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsdetaili != null">
+                goodsDetailI = #{updated.goodsdetaili,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.samplereturnperson != null">
+                sampleReturnPerson = #{updated.samplereturnperson,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.samplereturntime != null">
+                sampleReturnTime = #{updated.samplereturntime,jdbcType=BIGINT},
+            </if>
+            <if test="updated.goodshandlefirstqty != null">
+                goodsHandleFirstQty = #{updated.goodshandlefirstqty,jdbcType=FLOAT},
+            </if>
+            <if test="updated.goodshandlefirstunit != null">
+                goodsHandleFirstUnit = #{updated.goodshandlefirstunit,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.returnstatus != null">
+                returnStatus = #{updated.returnstatus,jdbcType=TINYINT},
+            </if>
+            <if test="updated.enabled != null">
+                enabled = #{updated.enabled,jdbcType=TINYINT},
+            </if>
+            <if test="updated.goodsposition != null">
+                goodsPo n = #{updated.goodsposition,jdbcType=TINYINT},
+            </if>
+            <if test="updated.goodsevaluation != null">
+                goodsEvaluation = #{updated.goodsevaluation,jdbcType=VARCHAR},
+            </if>
+    </set>
+        where 1=1
+        <if test="samplegoodsid != null">
+            and sampleGoodsId=#{samplegoodsid,jdbcType=VARCHAR}
+        </if>
+    </update>
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ld.store.dao.UserinfoMapper">
+  <resultMap id="BaseResultMap" type="com.ld.store.entity.Userinfo">
+    <!--@mbg.generated-->
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userPassword" jdbcType="VARCHAR" property="userpassword" />
+    <result column="userPression" jdbcType="TINYINT" property="userpression" />
+    <result column="creatTime" jdbcType="BIGINT" property="creattime" />
+    <result column="enabled" jdbcType="TINYINT" property="enabled" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ld.store.entity.Userinfo">
+    <!--@mbg.generated-->
+    insert into userinfo (userId, userName, userPassword, 
+      userPression, creatTime, enabled
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, 
+      #{userpression,jdbcType=TINYINT}, #{creattime,jdbcType=BIGINT}, #{enabled,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ld.store.entity.Userinfo">
+    <!--@mbg.generated-->
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="userpassword != null">
+        userPassword,
+      </if>
+      <if test="userpression != null">
+        userPression,
+      </if>
+      <if test="creattime != null">
+        creatTime,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null">
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userpression != null">
+        #{userpression,jdbcType=TINYINT},
+      </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=BIGINT},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into userinfo
+    (userId, userName, userPassword, userPression, creatTime, enabled)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userid,jdbcType=VARCHAR}, #{item.username,jdbcType=VARCHAR}, #{item.userpassword,jdbcType=VARCHAR}, 
+        #{item.userpression,jdbcType=TINYINT}, #{item.creattime,jdbcType=BIGINT}, #{item.enabled,jdbcType=TINYINT}
+        )
+    </foreach>
+  </insert>
+</mapper>

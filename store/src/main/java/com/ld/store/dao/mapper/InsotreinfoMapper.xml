@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ld.store.dao.InsotreinfoMapper">
+    <resultMap id="BaseResultMap" type="com.ld.store.entity.Insotreinfo">
+        <!--@mbg.generated-->
+        <result column="instoreInfoId" jdbcType="VARCHAR" property="instoreinfoid"/>
+        <result column="instoreNo" jdbcType="VARCHAR" property="instoreno"/>
+        <result column="goodsDesc" jdbcType="VARCHAR" property="goodsdesc"/>
+        <result column="instoreTime" jdbcType="BIGINT" property="instoretime"/>
+        <result column="inventory" jdbcType="VARCHAR" property="inventory"/>
+        <result column="scenePeople" jdbcType="VARCHAR" property="scenepeople"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="enabled" jdbcType="VARCHAR" property="enabled"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.ld.store.entity.Insotreinfo">
+        <!--@mbg.generated-->
+        insert into insotreinfo (instoreInfoId, instoreNo, goodsDesc,
+        instoreTime, inventory, scenePeople,
+        remark, enabled)
+        values (#{instoreinfoid,jdbcType=VARCHAR}, #{instoreno,jdbcType=VARCHAR}, #{goodsdesc,jdbcType=VARCHAR},
+        #{instoretime,jdbcType=BIGINT}, #{inventory,jdbcType=INTEGER} , #{scenepeople,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR}, #{enabled,jdbcType=INTEGER})
+    </insert>
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into insotreinfo
+        (instoreInfoId, instoreNo, goodsDesc, instoreTime, inventory, scenePeople, remark,
+        enabled)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.instoreinfoid,jdbcType=VARCHAR}, #{item.instoreno,jdbcType=VARCHAR},
+            #{item.goodsdesc,jdbcType=VARCHAR},
+            #{item.instoretime,jdbcType=BIGINT}, #{item.inventory,jdbcType=INTEGER},
+            #{item.scenepeople,jdbcType=VARCHAR},
+            #{item.remark,jdbcType=VARCHAR}, #{item.enabled,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+    <select id="queryAllByInstoreinfoid" resultMap="BaseResultMap">
+        select *
+        from insotreinfo i
+        where instoreInfoId = #{instoreInfoId}
+    </select>
+    <select id="queryallbyparams" resultMap="BaseResultMap">
+        select * from instoreinfo i
+        <where>
+            <if test="instoreNo != null and instoreNo != ''">
+                instoreNo like #{instoreNo}
+            </if>
+            <if test="endTime != null and startTime != null">
+                and instoretime &gt; #{startTime} and instoretime &lt; #{endTime}
+            </if>
+            <if test="inventory != null">
+                and inventory = #{inventory}
+            </if>
+            <if test="scenePeople != null and scenePeople != ''">
+                and scenepeople like #{scenePeople}
+            </if>
+        </where>
+        and enabled = 0 limit #{startRow} , #{pageRow}
+    </select>
+
+    <update id="updateInstoreInfo">
+        update insotreinfo i
+        <trim prefix="set" suffixOverrides=",">
+            <if test="instoreno != null and instoreno != ''">instoreno = #{instoreno},</if>
+            <if test="goodsdesc != null and goodsdesc != ''">goodsDesc = #{goodsdesc},</if>
+            <if test="remark != null and remark != ''">remark = #{remark} ,</if>
+            <if test="instoretime != null">instoreTime = #{instoretime} ,</if>
+            <if test="enabled != null">enabled = #{enabled},</if>
+            <if test="inventory != null">inventory = #{inventory} ,</if>
+            <if test="scenepeople != null and scenepeople != ''">scenePeople = #{scenepeople} ,</if>
+        </trim>
+        where instoreInfoId = #{instoreinfoid}
+    </update>
+
+
+</mapper>

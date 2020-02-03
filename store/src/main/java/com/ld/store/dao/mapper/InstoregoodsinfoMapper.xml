@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ld.store.dao.InstoregoodsinfoMapper">
+    <sql id="Base_Column_List">
+            instoreGoodsInfoId,
+            goodsNo,
+            instoreInfoId,
+            instoreNo,
+            goodsName,
+            goodsModel,
+            goodsType,
+            goodsDueDate,
+            goodsFirstQty,
+            goodsFirstUnit,
+            outGoodsFirstQty,
+            enabled,
+            goodsPosition
+    </sql>
+    <resultMap id="BaseResultMap" type="com.ld.store.entity.Instoregoodsinfo">
+        <!--@mbg.generated-->
+        <result column="instoreGoodsInfoId" jdbcType="VARCHAR" property="instoregoodsinfoid"/>
+        <result column="goodsNo" jdbcType="VARCHAR" property="goodsno"/>
+        <result column="instoreInfoId" jdbcType="VARCHAR" property="instoreinfoid"/>
+        <result column="instoreNo" jdbcType="VARCHAR" property="instoreno"/>
+        <result column="goodsName" jdbcType="VARCHAR" property="goodsname"/>
+        <result column="goodsModel" jdbcType="VARCHAR" property="goodsmodel"/>
+        <result column="goodsType" jdbcType="VARCHAR" property="goodstype"/>
+        <result column="goodsDueDate" jdbcType="BIGINT" property="goodsduedate"/>
+        <result column="goodsFirstQty" jdbcType="FLOAT" property="goodsfirstqty"/>
+        <result column="goodsFirstUnit" jdbcType="VARCHAR" property="goodsfirstunit"/>
+        <result column="outGoodsFirstQty" jdbcType="INTEGER" property="outgoodsfirstqty"/>
+        <result column="enabled" jdbcType="TINYINT" property="enabled"/>
+        <result column="goodsPosition" jdbcType="VARCHAR" property="goodsposition"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.ld.store.entity.Instoregoodsinfo">
+        <!--@mbg.generated-->
+        insert into instoregoodsinfo (instoreGoodsInfoId, goodsNo, instoreInfoId,
+        instoreNo, goodsName, goodsModel,
+        goodsType, goodsDueDate, goodsFirstQty,
+        goodsFirstUnit, outGoodsFirstQty, enabled,
+        goodsPosition)
+        values (#{instoregoodsinfoid,jdbcType=VARCHAR}, #{goodsno,jdbcType=VARCHAR}, #{instoreinfoid,jdbcType=VARCHAR},
+        #{instoreno,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, #{goodsmodel,jdbcType=VARCHAR},
+        #{goodstype,jdbcType=VARCHAR}, #{goodsduedate,jdbcType=BIGINT}, #{goodsfirstqty,jdbcType=FLOAT},
+        #{goodsfirstunit,jdbcType=VARCHAR}, #{outgoodsfirstqty,jdbcType=INTEGER}, #{enabled,jdbcType=TINYINT},
+        #{goodsposition,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ld.store.entity.Instoregoodsinfo">
+        <!--@mbg.generated-->
+        insert into instoregoodsinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="instoregoodsinfoid != null">
+                instoreGoodsInfoId,
+            </if>
+            <if test="goodsno != null">
+                goodsNo,
+            </if>
+            <if test="instoreinfoid != null">
+                instoreInfoId,
+            </if>
+            <if test="instoreno != null">
+                instoreNo,
+            </if>
+            <if test="goodsname != null">
+                goodsName,
+            </if>
+            <if test="goodsmodel != null">
+                goodsModel,
+            </if>
+            <if test="goodstype != null">
+                goodsType,
+            </if>
+            <if test="goodsduedate != null">
+                goodsDueDate,
+            </if>
+            <if test="goodsfirstqty != null">
+                goodsFirstQty,
+            </if>
+            <if test="goodsfirstunit != null">
+                goodsFirstUnit,
+            </if>
+            <if test="outgoodsfirstqty != null">
+                outGoodsFirstQty,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="goodsposition != null">
+                goodsPosition,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="instoregoodsinfoid != null">
+                #{instoregoodsinfoid,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsno != null">
+                #{goodsno,jdbcType=VARCHAR},
+            </if>
+            <if test="instoreinfoid != null">
+                #{instoreinfoid,jdbcType=VARCHAR},
+            </if>
+            <if test="instoreno != null">
+                #{instoreno,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsname != null">
+                #{goodsname,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsmodel != null">
+                #{goodsmodel,jdbcType=VARCHAR},
+            </if>
+            <if test="goodstype != null">
+                #{goodstype,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsduedate != null">
+                #{goodsduedate,jdbcType=BIGINT},
+            </if>
+            <if test="goodsfirstqty != null">
+                #{goodsfirstqty,jdbcType=FLOAT},
+            </if>
+            <if test="goodsfirstunit != null">
+                #{goodsfirstunit,jdbcType=VARCHAR},
+            </if>
+            <if test="outgoodsfirstqty != null">
+                #{outgoodsfirstqty,jdbcType=INTEGER},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=TINYINT},
+            </if>
+            <if test="goodsposition != null">
+                #{goodsposition,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into instoregoodsinfo
+        (instoreGoodsInfoId, goodsNo, instoreInfoId, instoreNo, goodsName, goodsModel, goodsType,
+        goodsDueDate, goodsFirstQty, goodsFirstUnit, outGoodsFirstQty, enabled, goodsPosition
+        )
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.instoregoodsinfoid,jdbcType=VARCHAR}, #{item.goodsno,jdbcType=VARCHAR},
+            #{item.instoreinfoid,jdbcType=VARCHAR},
+            #{item.instoreno,jdbcType=VARCHAR}, #{item.goodsname,jdbcType=VARCHAR}, #{item.goodsmodel,jdbcType=VARCHAR},
+            #{item.goodstype,jdbcType=VARCHAR}, #{item.goodsduedate,jdbcType=BIGINT},
+            #{item.goodsfirstqty,jdbcType=FLOAT},
+            #{item.goodsfirstunit,jdbcType=VARCHAR}, #{item.outgoodsfirstqty,jdbcType=INTEGER},
+            #{item.enabled,jdbcType=TINYINT}, #{item.goodsposition,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+    <select id="queryInstoregoodsById" resultMap="BaseResultMap">
+        select *
+        from instoregoodsinfo i
+        where instoreGoodsInfoId = #{instoreGoodsInfoId}
+    </select>
+    <select id="queryInstoreGoodsInfoByParams" resultMap="BaseResultMap">
+        select * from instoregoodsinfo i
+        <where>
+            <if test="goodsName != null and goodsName != ''">goodsname = #{goodsName} and</if>
+            <if test="instoreNo != null and instoreNo != ''">instoreno =#{instoreNo} and</if>
+            <if test="instoreInfoId != null and instoreInfoId != ''">instoreInfoId =#{instoreInfoId} and</if>
+        </where>
+        enabled = 0 limit #{startRow} ,#{pageSize}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2019-12-13-->
+    <update id="updateByInstoregoodsinfoid">
+        update instoregoodsinfo
+        <set>
+            <if test="updated.instoregoodsinfoid != null">
+                instoreGoodsInfoId = #{updated.instoregoodsinfoid,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsno != null">
+                goodsNo = #{updated.goodsno,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.instoreinfoid != null">
+                instoreInfoId = #{updated.instoreinfoid,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.instoreno != null">
+                instoreNo = #{updated.instoreno,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsname != null">
+                goodsName = #{updated.goodsname,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsmodel != null">
+                goodsModel = #{updated.goodsmodel,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodstype != null">
+                goodsType = #{updated.goodstype,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.goodsduedate != null">
+                goodsDueDate = #{updated.goodsduedate,jdbcType=BIGINT},
+            </if>
+            <if test="updated.goodsfirstqty != null">
+                goodsFirstQty = #{updated.goodsfirstqty,jdbcType=FLOAT},
+            </if>
+            <if test="updated.goodsfirstunit != null">
+                goodsFirstUnit = #{updated.goodsfirstunit,jdbcType=VARCHAR},
+            </if>
+            <if test="updated.outgoodsfirstqty != null">
+                outGoodsFirstQty = #{updated.outgoodsfirstqty,jdbcType=INTEGER},
+            </if>
+            <if test="updated.enabled != null">
+                enabled = #{updated.enabled,jdbcType=TINYINT},
+            </if>
+            <if test="updated.goodsposition != null">
+                goodsPosition = #{updated.goodsposition,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where instoreGoodsInfoId=#{instoregoodsinfoid,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

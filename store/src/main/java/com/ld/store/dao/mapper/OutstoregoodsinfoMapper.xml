@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ld.store.dao.OutstoregoodsinfoMapper">
+  <resultMap id="BaseResultMap" type="com.ld.store.entity.Outstoregoodsinfo">
+    <!--@mbg.generated-->
+    <result column="outStoreDealFormsId" jdbcType="VARCHAR" property="outstoredealformsid" />
+    <result column="outStoreInfoId" jdbcType="VARCHAR" property="outstoreinfoid" />
+    <result column="outStoreNo" jdbcType="VARCHAR" property="outstoreno" />
+    <result column="instoreNo" jdbcType="VARCHAR" property="instoreno" />
+    <result column="goodsName" jdbcType="VARCHAR" property="goodsname" />
+    <result column="goodsFirstQty" jdbcType="FLOAT" property="goodsfirstqty" />
+    <result column="goodsFirstUnit" jdbcType="VARCHAR" property="goodsfirstunit" />
+    <result column="goodsModel" jdbcType="VARCHAR" property="goodsmodel" />
+    <result column="consignee" jdbcType="VARCHAR" property="consignee" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="enabled" jdbcType="TINYINT" property="enabled" />
+    <result column="goodsPosition" jdbcType="VARCHAR" property="goodsposition" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ld.store.entity.Outstoregoodsinfo">
+    <!--@mbg.generated-->
+    insert into outstoregoodsinfo (outStoreDealFormsId, outStoreInfoId, 
+      outStoreNo, instoreNo, goodsName, 
+      goodsFirstQty, goodsFirstUnit, goodsModel, 
+      consignee, note, enabled, 
+      goodsPosition)
+    values (#{outstoredealformsid,jdbcType=VARCHAR}, #{outstoreinfoid,jdbcType=VARCHAR}, 
+      #{outstoreno,jdbcType=VARCHAR}, #{instoreno,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, 
+      #{goodsfirstqty,jdbcType=FLOAT}, #{goodsfirstunit,jdbcType=VARCHAR}, #{goodsmodel,jdbcType=VARCHAR}, 
+      #{consignee,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{enabled,jdbcType=TINYINT}, 
+      #{goodsposition,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ld.store.entity.Outstoregoodsinfo">
+    <!--@mbg.generated-->
+    insert into outstoregoodsinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="outstoredealformsid != null">
+        outStoreDealFormsId,
+      </if>
+      <if test="outstoreinfoid != null">
+        outStoreInfoId,
+      </if>
+      <if test="outstoreno != null">
+        outStoreNo,
+      </if>
+      <if test="instoreno != null">
+        instoreNo,
+      </if>
+      <if test="goodsname != null">
+        goodsName,
+      </if>
+      <if test="goodsfirstqty != null">
+        goodsFirstQty,
+      </if>
+      <if test="goodsfirstunit != null">
+        goodsFirstUnit,
+      </if>
+      <if test="goodsmodel != null">
+        goodsModel,
+      </if>
+      <if test="consignee != null">
+        consignee,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="goodsposition != null">
+        goodsPosition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="outstoredealformsid != null">
+        #{outstoredealformsid,jdbcType=VARCHAR},
+      </if>
+      <if test="outstoreinfoid != null">
+        #{outstoreinfoid,jdbcType=VARCHAR},
+      </if>
+      <if test="outstoreno != null">
+        #{outstoreno,jdbcType=VARCHAR},
+      </if>
+      <if test="instoreno != null">
+        #{instoreno,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsfirstqty != null">
+        #{goodsfirstqty,jdbcType=FLOAT},
+      </if>
+      <if test="goodsfirstunit != null">
+        #{goodsfirstunit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsmodel != null">
+        #{goodsmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null">
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=TINYINT},
+      </if>
+      <if test="goodsposition != null">
+        #{goodsposition,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into outstoregoodsinfo
+    (outStoreDealFormsId, outStoreInfoId, outStoreNo, instoreNo, goodsName, goodsFirstQty, 
+      goodsFirstUnit, goodsModel, consignee, note, enabled, goodsPosition)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.outstoredealformsid,jdbcType=VARCHAR}, #{item.outstoreinfoid,jdbcType=VARCHAR}, 
+        #{item.outstoreno,jdbcType=VARCHAR}, #{item.instoreno,jdbcType=VARCHAR}, #{item.goodsname,jdbcType=VARCHAR}, 
+        #{item.goodsfirstqty,jdbcType=FLOAT}, #{item.goodsfirstunit,jdbcType=VARCHAR}, 
+        #{item.goodsmodel,jdbcType=VARCHAR}, #{item.consignee,jdbcType=VARCHAR}, #{item.note,jdbcType=VARCHAR}, 
+        #{item.enabled,jdbcType=TINYINT}, #{item.goodsposition,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>
